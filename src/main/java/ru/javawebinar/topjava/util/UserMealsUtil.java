@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class UserMealsUtil {
@@ -29,8 +30,12 @@ public class UserMealsUtil {
 
     public static List<UserMealWithExcess> filteredByCycles(List<UserMeal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
         // TODO return filtered list with excess. Implement by cycles
-        System.out.println("RRR");
-        return null;
+        List<UserMealWithExcess> rez = new LinkedList<UserMealWithExcess>();
+        for (UserMeal m: meals) {
+            if (TimeUtil.isBetweenHalfOpen(m.getDateTime().toLocalTime(),startTime,endTime))
+            rez.add(new UserMealWithExcess(m.getDateTime(),m.getDescription(),m.getCalories(),true));
+        }
+        return rez;
     }
 
     public static List<UserMealWithExcess> filteredByStreams(List<UserMeal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
