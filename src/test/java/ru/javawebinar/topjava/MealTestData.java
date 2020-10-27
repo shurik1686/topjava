@@ -1,7 +1,6 @@
 package ru.javawebinar.topjava;
 
 import ru.javawebinar.topjava.model.Meal;
-import ru.javawebinar.topjava.model.User;
 
 import java.time.LocalDateTime;
 
@@ -30,13 +29,5 @@ public class MealTestData {
     public static void assertMatch(Meal actual, Meal expected) {
         assertThat(actual).usingRecursiveComparison().ignoringFields("dateTime").isEqualTo(expected);
     }
-/*
-    public static void assertMatch(Iterable<Meal> actual, Meal... expected) {
-        assertMatch(actual, Arrays.asList(expected));
-    }
 
-    public static void assertMatch(Iterable<Meal> actual, Iterable<Meal> expected) {
-        assertThat(actual).usingElementComparatorIgnoringFields("dateTime").isEqualTo(expected);
-    }
-    */
 }
